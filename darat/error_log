@@ -1,0 +1,15 @@
+[12-Dec-2018 01:48:30 UTC] PHP Warning:  mysqli_connect(): (HY000/1045): Access denied for user 'root'@'localhost' (using password: NO) in /home/dish4254/public_html/simtrans/darat/koneksi.php on line 7
+[12-Dec-2018 01:51:01 UTC] PHP Warning:  mysqli_connect(): (HY000/1045): Access denied for user 'root'@'localhost' (using password: NO) in /home/dish4254/public_html/simtrans/darat/koneksi.php on line 7
+[12-Dec-2018 01:51:16 UTC] PHP Warning:  mysqli_connect(): (HY000/1045): Access denied for user 'root'@'localhost' (using password: NO) in /home/dish4254/public_html/simtrans/darat/koneksi.php on line 7
+[12-Dec-2018 01:53:21 UTC] PHP Warning:  mysqli_connect(): (HY000/1045): Access denied for user 'root'@'localhost' (using password: NO) in /home/dish4254/public_html/simtrans/darat/koneksi.php on line 7
+[12-Dec-2018 01:54:58 UTC] PHP Warning:  mysqli_connect(): (HY000/1045): Access denied for user 'root'@'localhost' (using password: NO) in /home/dish4254/public_html/simtrans/darat/koneksi.php on line 7
+[12-Dec-2018 01:57:27 UTC] PHP Warning:  mysqli_connect(): (HY000/1045): Access denied for user 'root'@'localhost' (using password: NO) in /home/dish4254/public_html/simtrans/darat/koneksi.php on line 7
+[12-Dec-2018 01:59:06 UTC] PHP Warning:  mysqli_connect(): (HY000/1045): Access denied for user 'root'@'localhost' (using password: NO) in /home/dish4254/public_html/simtrans/darat/modul/akap.php on line 39
+[12-Dec-2018 01:59:06 UTC] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, boolean given in /home/dish4254/public_html/simtrans/darat/modul/akap.php on line 40
+[12-Dec-2018 01:59:06 UTC] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, null given in /home/dish4254/public_html/simtrans/darat/modul/akap.php on line 70
+[12-Dec-2018 01:59:36 UTC] PHP Warning:  mysqli_connect(): (HY000/1045): Access denied for user 'root'@'localhost' (using password: NO) in /home/dish4254/public_html/simtrans/darat/modul/akap.php on line 77
+[12-Dec-2018 01:59:36 UTC] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, boolean given in /home/dish4254/public_html/simtrans/darat/modul/akap.php on line 79
+[12-Dec-2018 01:59:36 UTC] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, null given in /home/dish4254/public_html/simtrans/darat/modul/akap.php on line 139
+[12-Dec-2018 02:01:32 UTC] PHP Warning:  mysqli_connect(): (HY000/1045): Access denied for user 'root'@'localhost' (using password: NO) in /home/dish4254/public_html/simtrans/darat/modul/akdp.php on line 39
+[12-Dec-2018 02:01:32 UTC] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, boolean given in /home/dish4254/public_html/simtrans/darat/modul/akdp.php on line 40
+[12-Dec-2018 02:01:32 UTC] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, null given in /home/dish4254/public_html/simtrans/darat/modul/akdp.php on line 71

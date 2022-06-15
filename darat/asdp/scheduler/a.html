@@ -1,0 +1,95 @@
+<!doctype html>
+<head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+    <title>Year view</title>
+    
+    <script src="codebase/dhtmlxscheduler.js" type="text/javascript" charset="utf-8"></script>
+    <script src="codebase/ext/dhtmlxscheduler_year_view.js" type="text/javascript" charset="utf-8"></script>
+    <script src="codebase/locale/locale_id.js" charset="utf-8"></script>
+    
+	<link rel="stylesheet" href="codebase/dhtmlxscheduler_terrace.css"  type="text/css" charset="utf-8">
+
+</head>
+	
+<style type="text/css" >
+	html, body{
+		margin:0px;
+		padding:0px;
+		height:100%;
+		overflow:hidden;
+	}	
+    .dhx_month_head.dhx_year_event{
+        background-color: #ff0000;
+        color: #fff;
+    }
+</style>
+
+<script type="text/javascript" charset="utf-8">
+	function init() {
+        var yearFilters = {
+            "a":function(id, event){ return event.type == 1},
+            "b":function(id, event){ return event.type == 2},
+            "c":function(id, event){ return event.type == 3}
+        };
+
+        var currentYearMode = "";
+
+        function setYearMode(mode){
+            currentYearMode = mode;
+            scheduler.filter_year = yearFilters[mode];
+        }
+        // update filters and redirect to 'year' mode when custom tab is clicked
+        scheduler.attachEvent("onBeforeViewChange", function(old_mode,old_date,mode,date){
+
+            if(yearFilters[mode.toLowerCase()]){
+                mode = mode.toLowerCase();
+
+                setYearMode(mode);
+                scheduler.setCurrentView(date, "month");
+                return false;
+            }
+
+            if(mode == "month" && !currentYearMode){
+                setYearMode("a")
+            }
+
+            return true;
+        });
+        // highlight active tab
+        scheduler.attachEvent("onViewChange", function(mode,date){
+            if(mode == "year"){
+                var tabs = document.querySelectorAll(".dhx_cal_tab");
+                for(var i = 0; i < tabs.length; i++){
+                    tabs[i].className = tabs[i].className.replace(" active", "");
+                }
+                var activeTab = document.querySelector("."+currentYearMode+"-tab");
+                activeTab.className += " active";
+            }
+            return true;
+        });
+        scheduler.config.fix_tab_position = false;
+        scheduler.xy.min_event_height = 50;//sets the height of the X-Axis
+        scheduler.config.active_link_view = "day";
+		scheduler.config.xml_date="%Y-%m-%d %H:%i";
+		scheduler.init('scheduler_here',new Date(2018, 08, 30),"month");
+		scheduler.load("data.php");
+	}
+</script>
+
+<body onload="init();">
+	<div id="scheduler_here" class="dhx_cal_container" style='width:100%; height:100%;'>
+	<div class="dhx_cal_navline">
+		<div class="dhx_cal_prev_button">&nbsp;</div>
+		<div class="dhx_cal_next_button">&nbsp;</div>
+		<div class="dhx_cal_today_button"></div>
+		<div class="dhx_cal_date"></div>
+        <div class="dhx_cal_tab a-tab" name="A_tab" style="right:204px;width:100px;left: 10px;">Dari P. Enggano</div>
+        <div class="dhx_cal_tab b-tab" name="B_tab" style="right:140px;width:100px;left: 120px;">Dari Bengkulu</div>
+        <div class="dhx_cal_tab c-tab" name="C_tab" style="right:76px;width:100px;left: 230px;">Angkutan BBM</div>
+	</div>
+		<div class="dhx_cal_header">
+		</div>
+		<div class="dhx_cal_data">
+		</div>		
+	</div>
+</body>

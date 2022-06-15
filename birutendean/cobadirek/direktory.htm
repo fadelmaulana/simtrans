@@ -1,0 +1,107 @@
+<p>Salah satu fungsi PHP yang sangat berguna bagi kita adalah fungsi pembacaan direktori. Fungsi ini bisa kita gunakan untuk membuat aplikasi manajemen file untuk kita gunakan di kantor tempat kita bekerja. Dimana file - file seperti surat - surat akan disimpan dalam 1 komputer server sehingga akan mempermudah pengguna ketika akan menggunakannya</p>
+
+<p>Skema sederhana yang bisa kita gunakan adalah :</p>
+<br />
+<script type="text/javascript"><!--
+google_ad_client = "ca-pub-9777159918670202";
+/* ajax ads */
+google_ad_slot = "4079796364";
+google_ad_width = 336;
+google_ad_height = 280;
+//-->
+</script>
+<script type="text/javascript"
+src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+<br />
+1. Ada server yang terkoneksi dengan jaringan LAN
+<p>Pada server ini kita install dengan PHP, Apache dan MySQL. Pada komputer ini</p>
+2. Buat Direktory Root untuk penyimpanan File
+<p>Direktory Root ini merupakan sebuah folder utama yang didalamnya berisi folder - folder lain untuk mengelompokkan jenis - jenis file atau laporan dalam kantor</p>
+3. Ada aplikasi managemen File yang dibuat dengan PHP, 
+<p>Aplikasi ini nantinya akan mempunyai fasilitas sebagai berikut :</p>
+<ul>
+	<li>Menampilkan daftar file dalam server</li>
+	<li>Upload file ke Server</li>
+	<li>Menghapus File dari server</li>
+	<li>Melakukan editing file laporan</li>
+	<li>Dan lain lain</li>
+</ul>
+<p>Contoh sederhana dari proses pembacaan direktory dengan PHP adalah sebagai berikut : file.php</p>
+<pre class="brush:php">
+&lt;?php
+define('_DOC_ROOT',dirname(__FILE__).'/');
+function directory_image($dir=false){
+	$data = '';
+	if ($handle = opendir(_DOC_ROOT.$dir)){
+		while (false !== ($file = readdir($handle))) {
+			echo $file.'&lt;br/&gt;';
+		}
+	}
+	closedir($handle);
+	return $data;
+}
+$folder = 'report';
+echo directory_image($folder);
+?&gt;
+</pre>
+<p>Untuk menjalankan script diatas, kita harus membuat dulu folder dengan <i>report</i> yang letaknya setingkat dengan script diatas. Didalam folder report tersebut kita isi dengan folder - folder lain dan juga file - file seperti file word, excel atau juga file - file pdf</p>
+<p>Dari contoh sederhana diatas, selanjutnya kita coba kembangkan dengan penambahan fitur - fitur lainnya untuk membuat tampilan yang lebih user friendly.</p>
+<pre class="brush:php">
+&lt;style type="text/css"&gt;
+	table{border:#ff9900 1px solid;}
+	table tr td{border-bottom:#ff9900 1px solid;border-right:#ff9900 1px solid;padding:0 5px 0 5px;}
+&lt;/style&gt;
+&lt;?php
+define('_DOC_ROOT',dirname(__FILE__).'/');
+function directory_image($dir=false){
+	$type = array('folder'=&gt;'folder.png','doc'=&gt;'doc.png','docx'=&gt;'doc.png','xls'=&gt;'xlsx.png','pdf'=&gt;'pdf.png');
+	$data = '&lt;table cellpadding="0" cellspacing="0"&gt;';
+	$nomor=1;
+	if ($handle = opendir(_DOC_ROOT.$dir)){
+		while (false !== ($file = readdir($handle))) {
+			if($file=='.' || $file=='..'){
+				
+			}
+			else{
+				$exp = explode('.',$file);
+				$icon= count($exp)==1?'folder':$exp[count($exp)-1];
+				if($icon=='folder'){
+					$link = '&lt;a href="#open" title="Open folder content"&gt;&lt;img src="images/open.png" border="0"/&gt;&lt;/a&gt;';
+				}
+				else{
+					$link = '&lt;a href="#download" title="Download file"&gt;&lt;img src="images/download.png" border="0"/&gt;&lt;/a&gt; 
+							 &lt;a href="#delete" title="Delete file"&gt;&lt;img src="images/delete.png" border="0" onclick="return confirm(\'Yakiiin ?\');"/&gt;&lt;/a&gt;';
+				}
+				$data .='&lt;tr&gt;
+							&lt;td&gt;'.$nomor.'&lt;/td&gt;
+							&lt;td&gt;&lt;img src="images/'.$type[$icon].'" width="25" align="absmiddle" title="'.$icon.'"/&gt;&lt;/td&gt;
+							&lt;td&gt;'.$file.'&lt;/td&gt;
+							&lt;td&gt;'.$link.'&lt;/td&gt;
+						 &lt;/tr&gt;';
+				$nomor++;
+			}
+		}
+	}
+	closedir($handle);
+	$data .='&lt;/table&gt;';
+	return $data;
+}
+$folder = 'report';
+echo directory_image($folder);
+?&gt;
+</pre>
+<p>Download dan pelajari script diatas pada link download dibawah ini: </p>
+<a href="http://media-kreatif.com/download/tutorial/php_direktori.zip">Download script php direktori - opendir</a>
+<br />
+<script type="text/javascript"><!--
+google_ad_client = "ca-pub-9777159918670202";
+/* media-tutorial */
+google_ad_slot = "5504886598";
+google_ad_width = 468;
+google_ad_height = 60;
+//-->
+</script>
+<script type="text/javascript"
+src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>

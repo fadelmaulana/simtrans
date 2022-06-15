@@ -1,0 +1,1 @@
+[12-Dec-2018 02:17:15 UTC] PHP Warning:  mysqli_connect(): (HY000/1045): Access denied for user 'root'@'localhost' (using password: NO) in /home/dish4254/public_html/simtrans/udara/modul/koneksi.php on line 7
